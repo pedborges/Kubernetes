@@ -1,0 +1,45 @@
+#lembre -se que antes de executar isso aqui precisa instalar com o helm criar o namespace certo e rodar a parada  
+# helm install nginx-ingress ingress-nginx/ingress-nginx \
+#  --namespace ingress-basic \
+# --set controller.replicaCount=2\
+#--set controller.nodeSelector."kubernetes\.io/os"=linux \
+#--set defaultBackend.nodeSelector."kubernetes\.io/os"=linux \
+# o service precisa estar no mesmo namespace ingress-basic
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: consultaip
+  annotations:
+     nginx.ingress.kubernetes.io/rewrite-target: /$1
+
+
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      # aqui voce poderia varios path pra cada serviço necessário
+      - path: /grafana/(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: grafanaloadbalancer
+            port:
+               number: 3000
+
+      - path: /serv/(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: ipservice
+            port:
+               number: 80
+             
+     # - path: /videos
+     #   pathType: Prefix
+       # backend:
+        #  service:
+         #   name: servicomentirinha
+          #  port:
+           #    number: 80

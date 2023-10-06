@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: meu-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce  # Modo de acesso ao volume (ReadWriteOnce, ReadOnlyMany, ReadWriteMany)
+  resources:
+    requests:
+      storage: 5Gi  # Tamanho do armazenamento solicitado
+  storageClassName: manual  # Nome da classe de armazenamento

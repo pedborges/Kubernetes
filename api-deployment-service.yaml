@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apiipdeployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apiip
+  template:
+    metadata:
+      labels: 
+        app: apiip
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "80"
+    spec:
+      containers:
+      - name: apipod
+        image: portifoliocr.azurecr.io/apiip:120
+        ports:
+        #porta em que o pod ouve / sidecar deve usar outra porta
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ipservice
+spec:
+  selector:
+    app: apiip
+  ports:
+  # essa porta é a que ele recebe
+    - port: 80
+    # essa porta é a que ele passa pro pod
+      targetPort: 80
+  type: LoadBalancer
+
+    

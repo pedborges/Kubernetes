@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafanaloadbalancer
+spec:
+  selector:
+    app.kubernetes.io/instance: grafana
+    app.kubernetes.io/name: grafana
+  ports:
+  # essa porta é a que ele recebe
+    - port: 3000
+    # essa porta é a que ele passa pro pod
+      targetPort: 80
+  type: LoadBalancer

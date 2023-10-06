@@ -1,0 +1,10 @@
+{
+    "auths": {
+      "portifoliocr.azurecr.io": {
+        "username": "Portifoliocr",
+        "password": "gbKWf3yhCO1GGIpqzFGgnkfEDp5wo6fmcbnuZSWm1d+ACRDNFaT1",
+        "email": "pedropinguelli@hotmail.com",
+        "auth": ""
+      }
+    }
+  }
