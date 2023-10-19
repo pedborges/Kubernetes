@@ -11,7 +11,10 @@ kind: Ingress
 metadata:
   name: consultaip
   annotations:
-     nginx.ingress.kubernetes.io/rewrite-target: /$1
+     nginx.ingress.kubernetes.io/use-regex: "true"
+     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+     nginx.ingress.kubernetes.io/rewrite-target: /$2
+     
 
 
 spec:
@@ -20,15 +23,15 @@ spec:
   - http:
       paths:
       # aqui voce poderia varios path pra cada serviço necessário
-      - path: /grafana/(.*)
+      - path: /grafana(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
           service:
             name: grafanaloadbalancer
             port:
-               number: 3000
+               number: 4000
 
-      - path: /serv/(.*)
+      - path: /serv(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
           service:
