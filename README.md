@@ -2,8 +2,8 @@
 
 ## Estes Arquivos Kubernetes serão responsaveis por:
 Provisionar um serviço de loadbalancer com tres replicas que será exposta a partir de um ingress controller, sendo esta, tendo a parte de monitoramento com o grafana e observabilidade com o prometheus
+![Captura de tela 2023-10-19 172644](https://github.com/pedborges/Kubernetes/assets/110577886/1ecca986-784d-4528-be99-05ebaae7c097)
 
-![Captura de tela 2023-10-19 172644](https://github.com/pedborges/Kubernetes/assets/110577886/65d86cc6-5092-431e-8e7e-73a720a5d46f)
 
 ## ✅ Pré requisitos:
 - Criar o namespace **ingress-basic** no seu cluster Kubernetes (caso não queira este nome, alterar a referência de criação do prometheus);
