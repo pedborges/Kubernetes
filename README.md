@@ -9,7 +9,7 @@ Provisionar um serviço de loadbalancer com tres replicas que será exposta a pa
 - Criar o namespace **ingress-basic** no seu cluster Kubernetes (caso não queira este nome, alterar a referência de criação do prometheus);
 - Instalar o prometheus e o grafana utilizando o helm;
 
--Por ser um repositório fechado, se faz necessário a criação de um arquivo **secret** para fornecermos os dados do **imagePullSecrets**;
+-Por ser um repositório fechado, se faz necessário a criação de um arquivo **secret** para fornecermos os dados do **imagePullSecrets**;</br>
 ![img1](https://github.com/pedborges/Kubernetes/assets/110577886/b81fccce-f6bc-4e55-aaa4-dbf8278edb59)
 
 
